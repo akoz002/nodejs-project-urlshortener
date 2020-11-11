@@ -1,6 +1,7 @@
-'use strict';
 
-import { setShortUrl, store } from './redux.js';
+import React from 'react';
+import { connect } from 'react-redux';
+import { setShortUrl } from '../redux/actions';
 
 /*
  * React component for visiting short URLs.
@@ -58,7 +59,7 @@ class VisitUrlForm extends React.Component {
  * Connect component to the Redux store.
  */
 
-const ConnectedVisitForm = ReactRedux.connect(
+const ConnectedVisitForm = connect(
   state => ({
     shortUrl: state.shortUrl
   }),
@@ -67,13 +68,4 @@ const ConnectedVisitForm = ReactRedux.connect(
   })
 )(VisitUrlForm);
 
-/*
- * Render the connected component.
- */
-
-ReactDOM.render(
-  <ReactRedux.Provider store={store}>
-    <ConnectedVisitForm />
-  </ReactRedux.Provider>,
-  document.querySelector('#visit-url-form')
-);
+export default ConnectedVisitForm;

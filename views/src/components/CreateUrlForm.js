@@ -1,6 +1,7 @@
-'use strict';
 
-import { createUrlAsync, store } from './redux.js';
+import React from 'react';
+import { connect } from 'react-redux';
+import { createUrlAsync } from '../redux/actions';
 
 /*
  * React component for creating short URLs.
@@ -72,7 +73,7 @@ class CreateUrlForm extends React.Component {
  * React component connected to the Redux store.
  */
 
-const ConnectedCreateForm = ReactRedux.connect(
+const ConnectedCreateForm = connect(
   state => ({
     urlInfo: state.urlInfo
   }),
@@ -81,13 +82,4 @@ const ConnectedCreateForm = ReactRedux.connect(
   })
 )(CreateUrlForm);
 
-/*
- * Render the connected component.
- */
-
-ReactDOM.render(
-  <ReactRedux.Provider store={store}>
-    <ConnectedCreateForm />
-  </ReactRedux.Provider>,
-  document.querySelector('#create-url-form')
-);
+export default ConnectedCreateForm;
