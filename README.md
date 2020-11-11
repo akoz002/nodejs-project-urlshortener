@@ -22,7 +22,7 @@
 
 ### Implementation
 
-The app is implemented with Node.js, Express and Mongoose/MongoDB. A demo can be found at the link below. The link shows a project overview page with a simple web form to create short URLs. 
+The app is implemented with Node.js, Express and Mongoose/MongoDB. A demo can be found at the link below. The home page shows a project overview with React/Redux web forms to create and visit short URLs. React/Redux source can be found at `views/js/`.
 
 * https://akoz002-nodejs-urlshortener.herokuapp.com/
 
