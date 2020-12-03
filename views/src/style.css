@@ -1,50 +1,38 @@
-/****** Main Styling ******/
 
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
 	color: #222;
 	background-color: #FaFaFa;
+	box-sizing: border-box;
+	max-width: 660px;
+	min-width: 320px;
+	margin: auto;
+	padding: 0 1em;
+	text-align: justify;
+	line-height: 1.4;
+}
+
+main, footer {
+	margin: 2em 0;
+}
+
+h1, h2, h3, p {
 	text-align: center;
-	line-height: 1.4em;
 }
 
-.container {
-	padding: 0;
-	margin-top: 40px;
-}
-
-h3 {
-  margin-top: 30px;
-}
-
-.footer {
-	margin-top: 40px;
-}
-
-.user-stories {
-  position: relative;
-  text-align: justify;
-  max-width: 700px;
-  margin: 15px auto;
-}
 code {
   font-family: monospace;
   padding: 2px;
   color: black;
   background-color: #fff;
 }
+
 ol {
-	list-style-position: inside;
-}
-ul {
-	list-style-type: none;
+	padding-left: 1.1em;
 }
 
 li {
-  margin-bottom: 0.5em;
-}
-.user-stories li {
   margin-bottom: 1em;
 }
 
@@ -54,37 +42,88 @@ a {
 
 form {
   border: solid 1px black;
-  border-radius: 5px;
-  margin: 10px auto;
-  padding: 20px;
+  border-radius: 0.3em;
+  margin: 1em auto;
   max-width: 600px;
 }
 
+/* Container for the label, text and submit inputs. */
+div.input-container {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	flex-wrap: wrap;
+}
+
 label {
-  margin-right: 10px;
+	flex-basis: 10em;
+  margin: 1em;
+	text-align: right;
 }
 
 input {
-  padding: 5px;
+	font-family: arial;
+	font-size: 0.85em;
+  padding: 0.4em;
+	margin: 0 1em 1em 0;
+	text-align: center;
+	color: black;
+	border: 1px solid hsl(0, 0%, 40%);
+	border-radius: 0.3em;
 }
 
-input[type=text] {
-  width: 220px;
-  text-align: center;
-	margin-right: 1em;
+input[type="text"] {
+	width: 13em;
+	background-color: white;
 }
 
-.code-block {
-	text-align: left;
+input[type="submit"] {
+	width: 8em;
+	background-color: hsl(0, 0%, 93%);
+}
+
+input[type="submit"]:hover {
+	background-color: hsl(0, 0%, 87%);
+	border-color: hsl(0, 0%, 30%);
+}
+
+/* Block of code displaying returned JSON. */
+ul {
+	list-style: none;
+}
+
+ul.code-block {
+	margin: 0 1em 1em;
 	padding-left: 1em;
 	background-color: white;
-	border-radius: 8px;
+	border-radius: 0.5em;
+	text-align: left;
 }
 
-.code-block ul {
+ul.code-block ul {
 	padding-left: 1em;
 }
 
-.code-block li {
+ul.code-block li {
 	margin: 0;
+}
+
+/*** Media Queries ***/
+
+@media (max-width: 435px) {
+	body {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 380px) {
+	body {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 330px) {
+	body {
+		font-size: 10px;
+	}
 }

@@ -45,11 +45,13 @@ class CreateUrlForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.createUrl}>
-        <label for="url-input">URL to be shortened:</label>
-        <input id="url-input" type="text" value={this.state.input}
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="Create URL" />
+        <div className='input-container'>
+          <label for="url-input">URL to be shortened:</label>
+          <input id="url-input" type="text" value={this.state.input}
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Create URL" />
+        </div>
         {
           this.props.urlInfo &&
           <ul className='code-block'>
