@@ -88,15 +88,18 @@ input[type="submit"]:hover {
 }
 
 /* Block of code displaying returned JSON. */
+.code-block {
+	margin: 0 1em 1em;
+	background-color: white;
+	border-radius: 0.5em;
+}
+
 ul {
 	list-style: none;
 }
 
 ul.code-block {
-	margin: 0 1em 1em;
 	padding-left: 1em;
-	background-color: white;
-	border-radius: 0.5em;
 	text-align: left;
 }
 
@@ -106,6 +109,10 @@ ul.code-block ul {
 
 ul.code-block li {
 	margin: 0;
+}
+
+p.code-block {
+	padding: 1em 0;
 }
 
 /*** Media Queries ***/

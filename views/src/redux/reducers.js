@@ -9,17 +9,25 @@ import {
 /*
  * Reducer for creating short URLs.
  *
- * The state is an object representing the created short URL info, e.g.
+ * The state contains an object representing the created short URL info, e.g.
  * { "original_url": "https://www.google.com/", "short_url": 1 }
  */
 
-const createUrlReducer = (state = null, action) => {
+const createUrlReducer = (state = {
+  creating: false,
+  info: null
+}, action) => {
   switch(action.type) {
     case REQ_CREATE_URL:
-      // at the moment this has no effect on state
-      return state;
+      return {
+        creating: true,
+        info: null
+      };
     case REC_CREATE_URL:
-      return action.urlInfo;
+      return {
+        creating: false,
+        info: action.urlInfo
+      };
     default:
       return state;
   }

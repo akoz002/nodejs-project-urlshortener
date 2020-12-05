@@ -43,6 +43,32 @@ class CreateUrlForm extends React.Component {
   }
 
   render() {
+    let urlInfoResult = null;
+    if (this.props.creatingUrl) {
+      urlInfoResult = (
+        <p className='code-block'>
+          <code>Creating URL...</code>
+        </p>
+      );
+    }
+    else if (this.props.urlInfo) {
+      urlInfoResult = (
+        <ul className='code-block'>
+          <code>
+            <li>{'{'}</li>
+            <ul>
+              {Object.keys(this.props.urlInfo).map((key, index, array) =>
+                <li key={key}>
+                  "{key}": {this.formatValue(key, index, array.length)}
+                </li>
+              )}
+            </ul>
+            <li>{'}'}</li>
+          </code>
+        </ul>
+      );
+    }
+
     return (
       <form onSubmit={this.createUrl}>
         <div className='input-container'>
@@ -52,20 +78,7 @@ class CreateUrlForm extends React.Component {
           />
           <input type="submit" value="Create URL" />
         </div>
-        {
-          this.props.urlInfo &&
-          <ul className='code-block'>
-            <code>
-              <li>{'{'}</li>
-              <ul>
-                {Object.keys(this.props.urlInfo).map((key, index, array) =>
-                  <li key={key}>"{key}": {this.formatValue(key, index, array.length)}</li>
-                )}
-              </ul>
-              <li>{'}'}</li>
-            </code>
-          </ul>
-        }
+        {urlInfoResult}
       </form>
     );
   }
@@ -77,7 +90,8 @@ class CreateUrlForm extends React.Component {
 
 const ConnectedCreateForm = connect(
   state => ({
-    urlInfo: state.urlInfo
+    creatingUrl: state.urlInfo.creating,
+    urlInfo: state.urlInfo.info
   }),
   dispatch => ({
     createNewUrl: url => dispatch(createUrlAsync(url))
