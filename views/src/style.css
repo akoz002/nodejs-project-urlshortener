@@ -1,11 +1,10 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
 	color: #222;
 	background-color: #FaFaFa;
 	box-sizing: border-box;
-	max-width: 660px;
+	max-width: 42em;
 	min-width: 320px;
 	margin: auto;
 	padding: 0 1em;
@@ -19,6 +18,7 @@ main, footer {
 
 h1, h2, h3, p {
 	text-align: center;
+	overflow: auto;
 }
 
 code {
@@ -48,7 +48,7 @@ form {
   border: solid 1px black;
   border-radius: 0.3em;
   margin: 1em auto;
-  max-width: 600px;
+  max-width: 38em;
 }
 
 /* Container for the label, text and submit inputs. */
@@ -91,6 +91,11 @@ input[type="submit"]:hover {
 	border-color: hsl(0, 0%, 30%);
 }
 
+/* Keyboard and mouse focus for all elements. */
+:focus {
+  outline: medium dotted black;
+}
+
 /* Block of code displaying returned JSON. */
 .code-block {
 	margin: 0 1em 1em;
@@ -105,6 +110,7 @@ ul {
 ul.code-block {
 	padding-left: 1em;
 	text-align: left;
+	overflow: auto;
 }
 
 ul.code-block ul {
@@ -121,20 +127,48 @@ p.code-block {
 
 /*** Media Queries ***/
 
-@media (max-width: 435px) {
-	body {
-		font-size: 14px;
-	}
+@media (min-width: 80em) {
+  html {
+    font-size: 1.2em;
+  }
 }
 
-@media (max-width: 380px) {
-	body {
-		font-size: 12px;
-	}
+@media (min-width: 100em) {
+  html {
+    font-size: 1.4em;
+  }
 }
 
-@media (max-width: 330px) {
-	body {
-		font-size: 10px;
+@media (min-width: 120em) {
+  html {
+    font-size: 1.6em;
+  }
+}
+
+@media (min-width: 140em) {
+  html {
+    font-size: 1.8em;
+  }
+}
+
+@media (min-width: 160em) {
+  html {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 27em) {
+  /* Single-column layout. */
+  div.input-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+	label {
+		flex-basis: auto;
+	}
+
+	input {
+		margin: 0 0 1em;
 	}
 }

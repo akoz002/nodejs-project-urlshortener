@@ -46,7 +46,7 @@ class VisitUrlForm extends React.Component {
       <form action={'api/shorturl/' + this.props.shortUrl} method='GET'
         target='_blank' onSubmit={this.visitUrl}>
         <div className='input-container'>
-          <label for='url-input'>Short URL to visit:</label>
+          <label htmlFor='url-input'>Short URL to visit:</label>
           <input id='url-input' type='text' value={this.state.input}
             onChange={this.handleChange}
           />
