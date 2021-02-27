@@ -8,12 +8,14 @@ const axios = require('axios');
 const queryString = require('querystring');
 require('dotenv').config();
 
+const APP_URL = process.env.APP_URL || 'http://localhost:3000/api/shorturl/';
+
 /*
  * Validate creating a short URL.
  */
 
 const validateCreateURL = (url, expectedUrlId) => axios.post(
-  process.env.APP_URL + 'new',
+  APP_URL + 'new',
   queryString.stringify({ url })
 )
 .then(res => {
@@ -29,7 +31,7 @@ const validateCreateURL = (url, expectedUrlId) => axios.post(
  */
 
 const createInvalidURL = url => axios.post(
-  process.env.APP_URL + 'new',
+  APP_URL + 'new',
   queryString.stringify({ url })
 )
 .then(res => {
@@ -43,7 +45,7 @@ const createInvalidURL = url => axios.post(
  */
 
 const validateVisitURL = (urlId, expectedUrl) => axios.get(
-  process.env.APP_URL + urlId
+  APP_URL + urlId
 )
 .then(res => {
   assert.strictEqual(res.request.res.responseUrl, expectedUrl);
@@ -57,7 +59,7 @@ const validateVisitURL = (urlId, expectedUrl) => axios.get(
  */
 
 const visitInvalidURL = urlId => axios.get(
-  process.env.APP_URL + urlId
+  APP_URL + urlId
 )
 .then(res => {
   assert.strictEqual(res.data.error,
@@ -69,7 +71,7 @@ const visitInvalidURL = urlId => axios.get(
  */
 
 const validateClearDatabase = () => axios.delete(
-  process.env.APP_URL + 'delete'
+  APP_URL + 'delete'
 )
 .then(async res => {
   assert.ok(!res.data); // no data on success
@@ -122,7 +124,7 @@ const invalidURLs = [
 ];
 
 async function runTests() {
-  console.log(`Running tests on app URL: '${process.env.APP_URL}'\n`);
+  console.log(`Running tests on app URL: '${APP_URL}'\n`);
 
   // clear the database before running tests
   await validateClearDatabase();

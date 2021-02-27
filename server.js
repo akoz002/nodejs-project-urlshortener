@@ -51,12 +51,14 @@ const getNewUrlId = () => Url.aggregate([
  * Connect to MongoDB.
  */
 
-mongoose.connect(process.env.DB_URI, {
+const DB_URI = process.env.DB_URI || 'mongodb://localhost/url-shortener';
+
+mongoose.connect(DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(() => {
-  console.log(`Successfully connected to MongoDB URI: '${process.env.DB_URI}'`);
+  console.log(`Successfully connected to MongoDB URI: '${DB_URI}'`);
 });
 
 /*
